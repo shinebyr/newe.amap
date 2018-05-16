@@ -8,9 +8,8 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<h2>AMAP Үйлчилгээний байгууллагуудын нэгдсэн портал</h2>
-					<h4></h4>
+				<div class="col-md-18">
+		<img src="/images/text.png" alt="">
 				</div>
 			</div>
 		</div>
@@ -99,8 +98,8 @@
 
 			<div class="col-md-12">
 				<h3 class="headline centered margin-bottom-45">
-					Онцлох байгууллагууд
-					<span>Манай сайтаас онцолж байгаа шилдэг байгууллагууд</span>
+				Бидний онцолж байгаа байгууллагууд
+					<span></span>
 				</h3>
 			</div>
 		</div>
@@ -145,7 +144,7 @@
 	<div class="row">
 
 		<div class="col-md-12">
-			<h3 class="headline centered margin-bottom-35 margin-top-70">Дүүргүүд<span>хамгийн их бүртгэлтэй байгууллагуудтай дүүргүүд</span></h3>
+			<h3 class="headline centered margin-bottom-35 margin-top-70">Байгууллага бүртгэлтэй дүүргүүд<span></span></h3>
 		</div>
 
 		<div class="col-md-4">
@@ -222,6 +221,109 @@
 </div>
 <!-- Container / End -->
 
+<!-- Parallax -->
+<div class="parallax"
+	data-background="images/bg-02.jpg"
+	data-color="#36383e"
+	data-color-opacity="0.6"
+	data-img-width="800"
+	data-img-height="505">
+
+	<!-- Infobox -->
+	<div class="text-content white-font">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-6 col-sm-8">
+					<h2>Бизнесээ өргөжүүл</h2>
+					<p>Өөрийн бизнесээ илүү түргэн шуурхай, ухаалгаар олонд таниул. Бид цахим орчинд таны байгууллагыг үр дүнтэйгээр сурталчилах болно</p>
+					<a href="{{ route('useraddlist.index')}}" class="button margin-top-25">Нэгдэх</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Infobox / End -->
+
+</div>
+<!-- Parallax / End -->
+<section class="fullwidth margin-top-70 padding-top-75 padding-bottom-70" data-background-color="#f9f9f9">
+	<!-- Info Section -->
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<h3 class="headline centered">
+					Хэрэглэгчид юу хэлэв?
+					<span class="margin-top-25"></span>
+				</h3>
+			</div>
+		</div>
+
+	</div>
+	<!-- Info Section / End -->
+
+	<!-- Categories Carousel -->
+	<div class="fullwidth-carousel-container margin-top-20">
+		<div class="testimonial-carousel testimonials">
+@foreach($service->reviews as $review)
+			<!-- Item -->
+			<div class="fw-carousel-review">
+				<div class="testimonial-box">
+					<div class="testimonial"><a href="{{ route('service',$service->slug)}}">{{$service->title}}</a>	 {{$review->description}}</div>
+				</div>
+				<div class="testimonial-author">
+					<img src="images/happy-client-01.jpg" alt="">
+					<h4><span>{{$review->headline}}</span></h4>
+				</div>
+			</div>
+
+					@endforeach
+</section>
+
+
+<!-- Recent Blog Posts -->
+<section class="fullwidth padding-top-75 padding-bottom-75" data-background-color="#f9f9f9">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="headline centered margin-bottom-50">
+					Шинэ нийтлэл
+				</h3>
+			</div>
+		</div>
+
+		<div class="row">
+				@foreach($newses as $news)
+			<!-- Blog Post Item -->
+			<div class="col-md-4">
+				<a href="pages-blog-post.html" class="blog-compact-item-container">
+					<div class="blog-compact-item">
+						<img src="{{Storage::disk('local')->url($news->image)}}" alt="">
+						<span class="blog-item-tag">{{$news->tag}}</span>
+						<div class="blog-compact-item-content">
+							<ul class="blog-post-tags">
+								<li>{{$news->created_at->format('F nS, Y - gi:A')}}</li>
+							</ul>
+							<h3>{{$news->title}}</h3>
+							<p>{{$news->subtitle}}</p>
+						</div>
+					</div>
+				</a>
+			</div>
+			<!-- Blog post Item / End -->
+			@endforeach
+			<div class="col-md-12 centered-content">
+				<a href="pages-blog.html" class="button border margin-top-10">View Blog</a>
+			</div>
+
+		</div>
+
+	</div>
+</section>
+<!-- Recent Blog Posts / End -->
 
 <!-- Flip banner -->
 <a href="{{route('listings')}}" class="flip-banner parallax margin-top-65" data-background="images/slider-bg-02.jpg" data-color="#f91942" data-color-opacity="0.85" data-img-width="2500" data-img-height="1666">

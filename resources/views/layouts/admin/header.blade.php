@@ -4,7 +4,7 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<title>Listeo</title>
+<title>UB-LIST.com | Админ хэсэг</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -101,35 +101,30 @@
 		<div class="dashboard-nav-inner">
       <div class="active treeview">
 
-
-
-			<ul data-submenu-title="Main">
-				<li class=""><a href="{{ asset('admin') }}"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+			<ul data-submenu-title="Үндсэн хэсэг">
+				<li ><a href="{{ asset('admin') }}"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
 				<li><a href="{{route('admin.messages')}}"><i class="sl sl-icon-envelope-open"></i> Messages</a></li>
 				<!-- <li><a href="dashboard-bookings.html"><i class="fa fa-calendar-check-o"></i> Bookings</a></li> -->
+          <li ><a href="{{ route('post.index') }}"><i class="im im-icon-Tag-4"></i>Нийтлэл</a></li>
+          <li ><a href="{{ route('post.create') }}"><i class="im im-icon-Tag-2"></i>Шинэ нийтлэл</a></li>
 			</ul>
 
-			<ul data-submenu-title="Listings">
-        <li><a><i class="sl sl-icon-layers"></i> Байгууллагууд</a>
-          <ul>
-            <li><a href="{{ route('addlist.index') }}">Active <span class="nav-tag green">6</span></a></li>
-            <li><a href="dashboard-my-listings.html">Expired <span class="nav-tag red">2</span></a></li>
-          </ul>
-        </li>
-				<li class=""><a href="{{ route('addlist.index') }}"><i class="sl sl-icon-layers"></i> Байгууллагууд</a></li>
-				<li class=""><a href="{{ route('addlist.create') }}"><i class="sl sl-icon-plus"></i> Байгууллага нэмэх</a></li>
-				<li class=""><a href="{{ route('addcategory.index') }}"><i class="im im-icon-Tag-4"></i> Төрлийн жагсаалт</a></li>
-				<li class=""><a href="{{ route('addtag.index') }}"><i class="im im-icon-Tag-2"></i> Түлхүүр үгсийн жагсаалт</a></li>
-        <li class=""><a href="{{ route('city.index') }}"><i class="im im-icon-Opera-House"></i> Хотуудын жагсаалт</a></li>
-        <li class=""><a href="{{ route('role.index') }}"><i class="im im-icon-Find-User"></i> Role</a></li>
-        <li class=""><a href="{{ route('amenity.index') }}"><i class="im im-icon-Coffee"></i> Amenities</a></li>
+			<ul data-submenu-title="Байгууллага">
+				<li ><a href="{{ route('addlist.index') }}"><i class="sl sl-icon-layers"></i> Байгууллагууд</a></li>
+				<li ><a href="{{ route('addlist.create') }}"><i class="sl sl-icon-plus"></i> Байгууллага нэмэх</a></li>
+        <li ><a href="{{ route('addcategory.index') }}"><i class="im im-icon-Tag-4"></i> Төрлийн жагсаалт</a></li>
+        <li ><a href="{{ route('addtag.index') }}"><i class="im im-icon-Tag-2"></i> Түлхүүр үгсийн жагсаалт</a></li>
+        <li ><a href="{{ route('city.index') }}"><i class="im im-icon-Opera-House"></i> Хотуудын жагсаалт</a></li>
+        <li ><a href="{{ route('amenity.index') }}"><i class="im im-icon-Coffee"></i> Орчин</a></li>
 
+        <li ><a href="{{ route('addlist.reviews')}}"><i class="sl sl-icon-star"></i> Reviews</a></li>
 			</ul>
 
-			<ul data-submenu-title="Account">
-				<li class=""><a href="{{ route('users.index') }}"><i class="sl sl-icon-user"></i> Users</a></li>
-				<li class=""><a href="index.html"><i class="sl sl-icon-power"></i> Logout</a></li>
-			</ul>
+      <ul data-submenu-title="Хэрэглэгч">
+        <li ><a href="{{ route('users.index') }}"><i class="sl sl-icon-user"></i> Хэрэглэгчид</a></li>
+        <li ><a href="{{ route('role.index') }}"><i class="im im-icon-Find-User"></i> Админ эрх</a></li>
+        <li ><a href="index.html"><i class="sl sl-icon-power"></i> Гарах</a></li>
+      </ul>
 </div>
 		</div>
 	</div>

@@ -18,12 +18,12 @@ class CreateCommentsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->text('comment');
-            $table->integer('service_id')->unsigned();
+            $table->integer('post_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('comments', function($table){
-          $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
+          $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }
 
@@ -34,7 +34,7 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropForeign(['service_id']);
+        Schema::dropForeign(['post_id']);
         Schema::dropIfExists('comments');
     }
 }

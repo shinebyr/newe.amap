@@ -37,12 +37,12 @@
 
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} tab-content" id="tab1" style="display: none;">
         <form method="POST" class="login" action="{{ route('login') }}" role="form">
-
+        {{ csrf_field() }}  {{ method_field('PUT') }}
           <p class="form-group{{ $errors->has('email') ? ' has-error' : '' }} input-icon-left m-b-10">
             <label for="username">Имэйл хаяг:
               <i class="im im-icon-Male"></i>
               <input id="email" type="email" name="email" class="form-control value="{{ old('email') }}" form-control-secondary" required autofocus placeholder="И-Мэйл хаяг">
-                {{ csrf_field() }}
+
               @if ($errors->has('email'))
                   <span class="help-block">
                       <strong>{{ $errors->first('email') }}</strong>
@@ -113,7 +113,6 @@
       <p class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
     <label for="gender">Хүйс:
         <select data-placeholder="Сонголт хийх" name="gender" id="gender" class="chosen-select">
-          <option label="blank"></option>
           <option value="1">Эрэгтэй</option>
           <option value="2">Эмэгтэй</option>
         </select>

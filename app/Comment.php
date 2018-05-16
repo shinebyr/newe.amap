@@ -10,8 +10,8 @@ class Comment extends Model
       'comment'
   ];
 
-  public function service()
+  public function post()
   {
-      $this->belongsTo('App\Service');
+      $this->belongsTo('App\Post');
   }
 }

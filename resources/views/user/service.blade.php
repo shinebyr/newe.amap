@@ -5,7 +5,7 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<title>AMAP | {{$service->title}}</title>
+<title>UB-LIST.com | {{$service->title}}</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -157,7 +157,7 @@
 						<li>
 							<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
 							<div class="comment-content"><div class="arrow-comment"></div>
-								<div class="comment-by">{{$review->headline}}<span class="date">{{ date('F nS, Y - gi:A', strtotime($review->creaded_at)) }}</span>
+								<div class="comment-by">{{$review->headline}}<span class="date">{{$review->created_at->format('F nS, Y - gi:A')}}</span>
 									<div class="star-rating" data-rating="{{$review->rating}}"></div>
 								</div>
 								<p>{{$review->description}}</p>

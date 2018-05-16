@@ -10,6 +10,7 @@ use App\Tag;
 use App\City;
 use App\Amenity;
 use App\Price;
+use App\ServiceReview;
 use Session;
 
 class AddListController extends Controller
@@ -24,7 +25,7 @@ class AddListController extends Controller
 
       $lists = Service::all();
       // $cities = City::;
-      return view('admin.list.lists', compact('lists', 'cities', 'prices'));
+      return view('admin.list.lists', compact('lists', 'cities'));
     }
 
     /**
@@ -60,14 +61,14 @@ class AddListController extends Controller
           'images' => 'required',
         ]);
 
-        if ($request->hasFile('images')) {
-              $imageName = $request->images->store('public/service_images');
+        if ($request->hasFile('image')) {
+              $imageName = $request->image->store('public/service_images');
           }
 
       $addlist = new Service;
       $addlist->title = $request->title;
       $addlist->address = $request->address;
-      $addlist->images = $imageName;
+      $addlist->image = $imageName;
       $addlist->description = $request->description;
       $addlist->phone = $request->phone;
       $addlist->website = $request->website;
@@ -240,6 +241,14 @@ class AddListController extends Controller
       $currentService->pictures()->delete();
 
       return redirect()->back();
+    }
+
+    public function reviews()
+    {
+
+            $reviews = ServiceReview::all();
+            // $cities = City::;
+            return view('admin.reviews', compact('reviews'));
     }
 
 }

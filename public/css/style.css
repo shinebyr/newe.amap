@@ -1,8 +1,8 @@
 @charset "UTF-8";
 @import "bootstrap-grid.css";
 @import "icons.css";
-@import 'https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700';
-@import 'https://fonts.googleapis.com/css?family=Open+Sans:500,600,700';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway&subset=cyrillic,cyrillic-ext';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=cyrillic,cyrillic-ext';
 /* @import 'fonts/fontawesome-webfont.woff2'; */
 input, input[type=text], input[type=password], input[type=email], input[type=number], textarea, select {
   height: 51px;

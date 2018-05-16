@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Comment;
-use App\Post;
-class CommentController extends Controller
+use App\Http\Controllers\Controller;
+use App\Tagpost;
+
+class TagpostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $tagposts = Tagpost::all();
+        return view('admin.post.tag.tagshow', compact('tagposts'));
     }
 
     /**
@@ -24,7 +26,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.post.tag.tag');
     }
 
     /**
@@ -33,42 +35,19 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     public function store(Request $request)
     {
-        Session::flash('success', 'User successfully created.');
-      $this->validate($request, array(
-      'name'       => 'required|max:100',
-      'email'      => 'required|email|max:100',
-      'comment'    => 'required|max:500',
-      'post_id' => 'required|max:255',
-      ));
-//#1
-        $comment = new Comment;
-        $comment->name = $request->name;
-        $comment->email = $request->email;
-        $comment->comment = $request->comment;
-        $comment->post_id = $request->post_id;
-        $comment->save();
+      $this->validate($request, [
+        'name' => 'required',
+        'slug' => 'required',
+      ]);
 
-        return redirect()->back();
+      $tagpost = new Tagpost;
+      $tagpost->name = $request->name;
+      $tagpost->slug = $request->slug;
+      $tagpost->save();
 
-
-      // $comment = new Comment;
-      // $comment->comment = $request->comment;
-      // $comment->service_id = $request->service_id;
-      // $comment->user_id = Auth::id();
-      // $service_id->comments()->save($comment);
-      // // $comment->save();
-      // return redirect()->back();
-//#2
-      // $service = Service::findOrFail($service_id)
-      // $comment = $service->comments()->create(['comment'=>$request->comment]);
-      // $comment->user_id = Auth::user()->id;
-      // $comment->save;
-      // return redirect()->back();
-#3
-
+      return redirect(route('posttag.index'));
     }
 
     /**
@@ -90,7 +69,8 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        //
+      $tagpost = Tagpost::where('id', $id)->first();
+      return view('admin.post.tag.edittag', compact('tagpost'));
     }
 
     /**
@@ -102,7 +82,17 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, [
+        'name' => 'required',
+        'slug' => 'required',
+      ]);
+
+      $tagpost = Tagpost::find($id);
+      $tagpost->name = $request->name;
+      $tagpost->slug = $request->slug;
+      $tagpost->save();
+
+      return redirect(route('posttag.index'));
     }
 
     /**
@@ -113,6 +103,7 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+      Tagpost::where('id', $id)->delete();
+      return redirect()->back();
     }
 }

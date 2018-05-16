@@ -8,6 +8,7 @@ use App\Service;
 use App\Category;
 use App\Tag;
 use App\City;
+use App\Post;
 class HomeController extends Controller
 {
     /**
@@ -28,6 +29,8 @@ class HomeController extends Controller
     public function index()
     {
         $services = Service::where('special', 1)->orderBy('created_at','DESC')->paginate(9);
-        return view('home', compact('services'));
+        $newses = Post::orderBy('created_at', 'desc')->take(3)->get();
+
+        return view('home', compact('services'))->with('newses', $newses);
     }
 }

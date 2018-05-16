@@ -9,9 +9,24 @@ use App\Category;
 use App\Tag;
 use App\City;
 use App\ServiceImage;
+use App\Post;
 use Session;
+use Carbon\Carbon;
 class ListController extends Controller
 {
+    public function posts()
+    {
+      $posts = Post::all();
+      return view('user/posts', compact('posts'));
+    }
+
+    public function post(post $post)
+    {
+
+     // This will pass a collection of the 10 most recent news records to the view...
+     $newses = Post::orderBy('created_at', 'desc')->take(2)->get();
+      return view('user/viewpost', compact('post'))->with('newses', $newses);
+    }
 
     public function index()
     {
@@ -22,7 +37,8 @@ class ListController extends Controller
     public function guest()
     {
         $services = Service::where('special', 1)->orderBy('created_at','DESC')->paginate(9);
-        return view('home', compact('services'));
+        $newses = Post::orderBy('created_at', 'desc')->take(3)->get();
+        return view('home', compact('services'))->with('newses', $newses);
     }
 
     public function gridView()

@@ -1,9 +1,5 @@
 <?php
 
-Route::get('/', function () {
-    return view('home');
-});
-
 Auth::routes();
 
 Route::get('/', 'User\ListController@guest')->name('guest');
@@ -16,7 +12,9 @@ Route::post('listings/image-upload/{serviceId}', 'User\ListController@service');
 //contact
 Route::get('/contact', 'ContactController@create')->name('contact.create');
 Route::post('/contact', 'ContactController@store')->name('contact.store');
-
+//USER VIEW Post
+Route::get('/blog', 'User\ListController@posts')->name('posts');
+Route::get('posts/{post}', 'User\ListController@post')->name('view.post');
 
 Route::get('listings/tag/{tag}', 'User\ListController@tag')->name('tag');
 Route::get('listings/category/{category}', 'User\ListController@category')->name('category');
@@ -62,8 +60,11 @@ Route::group(['prefix' => 'admin'], function () {
   Route::resource('users', 'Admin\UserController');
   //List
   Route::resource('addlist', 'Admin\AddListController');
+  //post
+  Route::resource('post', 'Admin\PostController');
+  Route::resource('posttag', 'Admin\TagpostController');
   // Route::get('expired', 'Admin\AddListController@expired')->name('expired');
-
+  Route::get('reviews', 'Admin\AddListController@reviews')->name('addlist.reviews');
   //Gallery
   Route::post('addlist/image-upload/{serviceId}', 'Admin\AddListController@uploadImages');
   Route::get('addlist/delete/{serviceId}', 'Admin\AddListController@deleteImages');

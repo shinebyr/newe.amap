@@ -32,11 +32,6 @@ class Service extends Model
     return $this->hasMany('App\ServiceImage');
   }
 
-  public function comments()
-  {
-    return $this->hasMany('App\Comment');
-  }
-
   public function reviews()
   {
     return $this->hasMany('App\ServiceReview');
@@ -46,8 +41,6 @@ class Service extends Model
   {
     return $this->hasMany('App\Like');
   }
-
-
 
   public function getStarRating()
   {
